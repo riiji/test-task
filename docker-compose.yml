@@ -1,0 +1,16 @@
+services:
+  mongo:
+    container_name: mongo_test_task
+    image: mongo
+    restart: unless-stopped
+    ports:
+      - "27018:27017"
+    volumes:
+      - dev_mongo_data:/var/lib/mongodb/data
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: test
+      MONGO_INITDB_ROOT_PASSWORD: secret
+
+volumes:
+  dev_mongo_data:
+    external: true
